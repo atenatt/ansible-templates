@@ -1,0 +1,7 @@
+- hosts: dbservers
+  tasks:
+  - name: Allow access from 10.0.0.1
+    ansible.builtin.iptables:
+      chain: INPUT
+      jump: ACCEPT
+      source: 10.0.0.1
