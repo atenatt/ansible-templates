@@ -1,0 +1,27 @@
+- name: Gerenciar pacotes no sistema
+  hosts: all
+  become: yes
+  tasks:
+    - name: Instalar o pacote 'vim'
+      ansible.builtin.yum:  # Para sistemas RHEL/CentOS
+        name: vim
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+    - name: Instalar o pacote 'vim'
+      ansible.builtin.apt:  # Para sistemas Debian/Ubuntu
+        name: vim
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Remover o pacote 'nano'
+      ansible.builtin.yum:
+        name: nano
+        state: absent
+      when: ansible_facts['os_family'] == "RedHat"
+      
+    - name: Remover o pacote 'nano'
+      ansible.builtin.apt:
+        name: nano
+        state: absent
+      when: ansible_facts['os_family'] == "Debian"

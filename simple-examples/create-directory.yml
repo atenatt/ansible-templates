@@ -1,0 +1,11 @@
+- name: Criar diretório no sistema
+  hosts: all
+  become: yes
+  tasks:
+    - name: Criar diretório "/var/log/custom"
+      ansible.builtin.file:
+        path: /var/log/custom
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'

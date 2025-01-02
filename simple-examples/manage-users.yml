@@ -1,0 +1,15 @@
+- name: Gerenciar usuários no sistema
+  hosts: all
+  become: yes
+  tasks:
+    - name: Criar o usuário 'admin'
+      ansible.builtin.user:
+        name: admin
+        state: present
+        groups: sudo
+        shell: /bin/bash
+
+    - name: Remover o usuário 'guest'
+      ansible.builtin.user:
+        name: guest
+        state: absent

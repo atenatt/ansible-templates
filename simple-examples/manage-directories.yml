@@ -1,0 +1,17 @@
+- name: Gerenciar diretórios no sistema
+  hosts: all
+  become: yes
+  tasks:
+    - name: Criar diretório /var/log/myapp
+      ansible.builtin.file:
+        path: /var/log/myapp
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Garantir que o diretório /tmp/important exista
+      ansible.builtin.file:
+        path: /tmp/important
+        state: directory
+        mode: '0700'

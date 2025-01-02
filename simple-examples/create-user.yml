@@ -1,0 +1,11 @@
+- name: Criar usuário no sistema
+  hosts: all
+  become: yes  # Necessário para obter privilégios de root
+  tasks:
+    - name: Criar o usuário "admin"
+      ansible.builtin.user:
+        name: admin
+        state: present
+        groups: sudo
+        shell: /bin/bash
+        password: "{{ 'password' | password_hash('sha512') }}"

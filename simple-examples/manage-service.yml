@@ -1,0 +1,15 @@
+- name: Gerenciar serviços no sistema
+  hosts: all
+  become: yes
+  tasks:
+    - name: Iniciar o serviço Apache
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Parar o serviço Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: stopped
+        enabled: no
