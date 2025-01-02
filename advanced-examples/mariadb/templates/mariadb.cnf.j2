@@ -1,0 +1,5 @@
+[mysqld]
+bind-address = {{ ansible_default_ipv4.address }}
+max_connections = 500
+datadir = /var/lib/mysql
+log-error = /var/log/mysql/error.log

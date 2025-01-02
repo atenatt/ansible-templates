@@ -1,0 +1,31 @@
+- name: Configure multi-node infrastructure
+  hosts: all
+  tasks:
+    # Configuração específica para um grupo de hosts
+    - name: Atualizar pacotes nos servidores web
+      ansible.builtin.yum:
+        name: "*"
+        state: latest
+      when: "'webserver' in group_names"
+
+    # Configurar o banco de dados nos servidores de database
+    - name: Instalar MariaDB
+      ansible.builtin.yum:
+        name: mariadb-server
+        state: present
+      when: "'database' in group_names"
+
+    - name: Configurar o arquivo de configuração do MariaDB
+      ansible.builtin.template:
+        src: templates/mariadb.cnf.j2
+        dest: /etc/my.cnf
+        owner: mysql
+        group: mysql
+        mode: '0644'
+      when: "'database' in group_names"
+
+    - name: Reiniciar o MariaDB
+      ansible.builtin.service:
+        name: mariadb
+        state: restarted
+      when: "'database' in group_names"
