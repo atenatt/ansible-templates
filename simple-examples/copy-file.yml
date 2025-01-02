@@ -1,0 +1,11 @@
+- name: Copiar arquivo de configuração
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copiar arquivo para o diretório "/etc"
+      ansible.builtin.copy:
+        src: files/myconfig.conf
+        dest: /etc/myconfig.conf
+        owner: root
+        group: root
+        mode: '0644'
