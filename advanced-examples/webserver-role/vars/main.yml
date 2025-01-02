@@ -1,0 +1,2 @@
+server_name: mysite.local
+document_root: /var/www/mysite

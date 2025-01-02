@@ -1,0 +1,14 @@
+- name: Instalar Apache
+  ansible.builtin.yum:
+    name: httpd
+    state: present
+
+- name: Configurar o virtual host
+  ansible.builtin.template:
+    src: templates/vhost.conf.j2
+    dest: /etc/httpd/conf.d/vhost.conf
+
+- name: Reiniciar Apache
+  ansible.builtin.service:
+    name: httpd
+    state: restarted
