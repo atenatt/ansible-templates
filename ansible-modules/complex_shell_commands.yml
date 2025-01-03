@@ -1,0 +1,14 @@
+---
+- name: Execute Complex Shell Commands
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Execute complex command
+      register: complex_command_output
+
+      # TODO 
+
+    - name: Display complex command output
+      debug:
+        var: complex_command_output.stdout_lines

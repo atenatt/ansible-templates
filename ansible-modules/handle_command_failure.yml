@@ -1,0 +1,14 @@
+---
+- name: Handle Command Failure
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Execute a failing command
+      shell: failing-command
+
+      # TODO 
+
+    - name: Handle command failure
+      
+      # TODO

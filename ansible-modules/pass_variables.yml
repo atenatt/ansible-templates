@@ -1,0 +1,13 @@
+---
+- name: Pass Variables to Shell Commands
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Execute ls command with a variable
+    
+    # TODO 
+    
+    - name: Display variable command output
+    
+    # TODO

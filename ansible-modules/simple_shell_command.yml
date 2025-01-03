@@ -1,0 +1,13 @@
+---
+- name: Execute a Simple Shell Command
+  hosts: # TODO 
+  gather_facts: false
+  
+  tasks:
+    - name: Execute ls -l command
+
+      # TODO 
+
+    - name: Display command output
+
+      # TODO
