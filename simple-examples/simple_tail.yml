@@ -1,0 +1,14 @@
+---
+- name: Use variables with the Command module
+  hosts: localhost
+  vars:
+    file_path: /etc/passwd
+    line_count: 5
+  tasks:
+    - name: Display the last few lines of a file
+      command: "tail -n {{ line_count }} {{ file_path }}"
+      register: command_output
+
+    - name: Show the command output
+      debug:
+        var: command_output.stdout_lines
