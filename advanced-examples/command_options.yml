@@ -1,0 +1,31 @@
+---
+- name: Explore Command module options
+  hosts: localhost
+  tasks:
+    - name: Run a command with a specific working directory
+      command: pwd
+      args:
+        chdir: /tmp
+
+    - name: Run a command with environment variables
+      command: echo $MY_VAR
+      environment:
+        MY_VAR: "Hello from Ansible"
+
+    - name: Run a command and ignore errors
+      command: ls /nonexistent_directory
+      ignore_errors: yes
+
+    - name: Run a command with a timeout
+      command: sleep 2
+      async: 5
+      poll: 0
+      register: sleep_result
+
+    - name: Check sleep command status
+      async_status:
+        jid: "{{ sleep_result.ansible_job_id }}"
+      register: job_result
+      until: job_result.finished
+      retries: 5
+      delay: 1
