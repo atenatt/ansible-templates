@@ -1,0 +1,6 @@
+- hosts: localhost
+  tasks:
+    - name: Remove the cron job
+      cron:
+        name: my_cron_job
+        state: absent

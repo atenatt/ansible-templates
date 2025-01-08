@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+    - name: Schedule a task with custom time
+      cron:
+        name: custom_cron_job
+        minute: "0"
+        hour: "9"
+        job: /home/labex/project/script.sh
+        user: labex
