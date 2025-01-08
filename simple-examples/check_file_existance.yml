@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+    - name: Check file existence on remote host
+      stat:
+        path: /home/labex/project/file.txt
+      register: file_info
+
+    - name: Print file existence
+      debug:
+        msg: "File exists: {{ file_info.stat.exists }}"
