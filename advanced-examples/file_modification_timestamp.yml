@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+    - name: Get file modification timestamp
+      stat:
+        path: /home/labex/project/file.txt
+      register: file_info
+
+    - name: Print file modification timestamp
+      debug:
+        msg: "File modification timestamp: {{ file_info.stat.mtime }}"
