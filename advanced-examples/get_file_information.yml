@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+    - name: Get file information
+      stat:
+        path: /home/labex/project/file.txt
+      register: file_info
+
+    - name: Print file information
+      debug:
+        msg: |
+          File size: {{ file_info.stat.size }}
+          Ownership: {{ file_info.stat.uid }}:{{ file_info.stat.gid }}
+          Permissions: {{ file_info.stat.mode }}

@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Download a file and verify checksum
+      get_url:
+        url: "https://releases.ansible.com/ansible/ansible-2.9.25.tar.gz"
+        dest: "/tmp/ansible-2.9.25-2.tar.gz"
+        checksum: "sha256:https://releases.ansible.com/ansible/ansible-2.9.25.tar.gz.sha"
