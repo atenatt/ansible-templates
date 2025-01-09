@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+    - name: Execute a simple script
+      script: /home/labex/project/simple_script.sh
+      register: script_output
+
+    - name: Display script output
+      debug:
+        var: script_output.stdout_lines

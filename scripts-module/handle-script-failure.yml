@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+    - name: Execute a failing script
+      script: /home/labex/project/failing_script.sh
+      register: failing_script_output
+      ignore_errors: yes
+
+    - name: Handle script failure
+      debug:
+        msg: "The script failed. Performing fallback action."
+      when: failing_script_output.failed
