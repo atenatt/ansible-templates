@@ -1,0 +1,14 @@
+- name: Executing a Complex Local Action
+  gather_facts: false
+  hosts: localhost
+
+  tasks:
+    - name: Execute a shell script with arguments
+      local_action:
+        module: shell
+        cmd: ./script.sh 5 7
+      register: result
+
+    - name: Debug the output
+      debug:
+        var: result.stdout

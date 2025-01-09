@@ -1,0 +1,14 @@
+- name: Executing a Simple Command Locally
+  gather_facts: false
+  hosts: localhost
+
+  tasks:
+    - name: Print a message locally
+      local_action:
+        module: command
+        cmd: echo "Hello, World!"
+      register: result
+
+    - name: Debug the output
+      debug:
+        var: result.stdout
